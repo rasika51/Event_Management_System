@@ -23,13 +23,35 @@ class AdminController extends Controller
         $recentEventsCount = Event::where('created_at', '>=', now()->subDays(30))->count();
         $recentUsersCount = User::where('created_at', '>=', now()->subDays(30))->count();
         
+        // 14-day chart data
+        $userChartData = [];
+        $eventChartData = [];
+        
+        for ($i = 13; $i >= 0; $i--) {
+            $date = now()->subDays($i)->format('Y-m-d');
+            $userCount = User::whereDate('created_at', $date)->count();
+            $eventCount = Event::whereDate('created_at', $date)->count();
+            
+            $userChartData[] = [
+                'date' => now()->subDays($i)->format('M d'),
+                'count' => $userCount
+            ];
+            
+            $eventChartData[] = [
+                'date' => now()->subDays($i)->format('M d'),
+                'count' => $eventCount
+            ];
+        }
+        
         return view('admin.dashboard', compact(
             'totalUsers', 
             'totalEvents', 
             'recentEvents', 
             'recentUsers',
             'recentEventsCount',
-            'recentUsersCount'
+            'recentUsersCount',
+            'userChartData',
+            'eventChartData'
         ));
     }
 

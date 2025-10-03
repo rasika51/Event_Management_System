@@ -12,7 +12,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Delete completed events that are older than 30 days
+        $schedule->command('events:delete-completed')
+                 ->daily()
+                 ->at('02:00')
+                 ->withoutOverlapping()
+                 ->runInBackground();
     }
 
     /**
