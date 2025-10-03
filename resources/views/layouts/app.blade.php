@@ -17,16 +17,21 @@
     
     <style>
         :root {
-            --primary-color: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary-color: #1d4ed8;
+            --primary-color: #667eea;
+            --primary-dark: #764ba2;
+            --secondary-color: #1e3a8a;
+            --accent-color: #1e40af;
             --success-color: #10b981;
+            --success-dark: #059669;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
             --dark-color: #1f2937;
             --light-color: #f9fafb;
-            --sidebar-bg: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+            --sidebar-bg: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --gradient-primary: linear-gradient(45deg, #667eea, #764ba2);
+            --gradient-success: linear-gradient(45deg, #10b981, #059669);
+            --gradient-dark: linear-gradient(45deg, #1e3a8a, #1e40af);
         }
 
         .hero-section {
@@ -50,14 +55,14 @@
         
         .sidebar {
             min-height: 100vh;
-            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gradient-primary);
             position: fixed;
             top: 0;
             left: 0;
             width: 280px;
             z-index: 1000;
             overflow-y: auto;
-            box-shadow: 4px 0 20px rgba(30, 58, 138, 0.4);
+            box-shadow: 4px 0 20px rgba(102, 126, 234, 0.4);
         }
         
         .main-content {
@@ -128,11 +133,11 @@
         }
         
         .stats-card {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gradient-primary);
             border: none;
             border-radius: 1rem;
             padding: 1rem;
-            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.4);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -202,13 +207,13 @@
         }
         
         .btn-primary-gradient {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: var(--gradient-primary);
             color: white;
         }
         
         .btn-primary-gradient:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.5);
+            box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.5);
             color: white;
         }
         
@@ -219,13 +224,13 @@
         }
         
         .btn-outline-gradient:hover {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: var(--gradient-primary);
             color: white;
             transform: translateY(-2px);
         }
         
         .btn-view-all {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gradient-primary);
             color: white;
             border: none;
             border-radius: 0.75rem;
@@ -237,12 +242,12 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
         
         .btn-view-all:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
             color: white;
         }
         
