@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -65,8 +64,8 @@
                                         <i class="bi bi-geo-alt me-1 text-muted"></i>
                                         {{ $event->location }}
                                     </td>
-                                    <td>
-                                        <span class="badge bg-{{ $event->status === 'active' ? 'success' : ($event->status === 'cancelled' ? 'danger' : 'secondary') }}">
+                                    <td class="text-center">
+                                        <span class="badge bg-{{ $event->status === 'active' ? 'success' : ($event->status === 'cancelled' ? 'danger' : 'secondary') }} px-2 py-1" style="min-width: 50px; text-align: center; display: inline-block; font-size: 0.75rem;">
                                             {{ ucfirst($event->status) }}
                                         </span>
                                     </td>
@@ -84,6 +83,10 @@
                                             <a href="{{ route('events.show', $event) }}" 
                                                class="btn btn-outline-primary" title="View">
                                                 <i class="bi bi-eye"></i>
+                                            </a>
+                                            <a href="{{ route('events.edit', $event) }}" 
+                                               class="btn btn-outline-warning" title="Edit">
+                                                <i class="bi bi-pencil"></i>
                                             </a>
                                             <form method="POST" action="{{ route('admin.events.destroy', $event) }}" 
                                                   class="d-inline" onsubmit="return confirm('Are you sure you want to delete this event?')">
@@ -117,5 +120,4 @@
             @endif
         </div>
     </div>
-</div>
 @endsection

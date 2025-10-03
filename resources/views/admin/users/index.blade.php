@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -51,8 +50,8 @@
                                         </div>
                                     </td>
                                     <td>{{ $user->email }}</td>
-                                    <td>
-                                        <span class="badge bg-{{ $user->role === 'admin' ? 'danger' : 'primary' }}">
+                                    <td class="text-center">
+                                        <span class="badge bg-{{ $user->role === 'admin' ? 'danger' : 'primary' }} px-2 py-1" style="min-width: 50px; text-align: center; display: inline-block; font-size: 0.75rem;">
                                             {{ ucfirst($user->role) }}
                                         </span>
                                     </td>
@@ -101,5 +100,4 @@
             @endif
         </div>
     </div>
-</div>
 @endsection
