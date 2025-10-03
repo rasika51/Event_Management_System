@@ -7,7 +7,7 @@
     <div class="col-12">
         <div class="recent-events-card">
             <div class="card-header-custom d-flex justify-content-between align-items-center">
-                <h5 class="mb-0 fw-semibold" style="color: #1e3a8a;">
+                <h5 class="mb-0 fw-semibold" style="background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     Quick Actions
                 </h5>
             </div>
@@ -44,7 +44,7 @@
     <div class="col-lg-6 mb-4">
         <div class="recent-events-card">
             <div class="card-header-custom d-flex justify-content-between align-items-center">
-                <h5 class="mb-0 fw-semibold" style="color: #1e3a8a;">
+                <h5 class="mb-0 fw-semibold" style="background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     <i class="bi bi-graph-up me-2"></i>New Users (14 Days)
                 </h5>
             </div>
@@ -57,7 +57,7 @@
     <div class="col-lg-6 mb-4">
         <div class="recent-events-card">
             <div class="card-header-custom d-flex justify-content-between align-items-center">
-                <h5 class="mb-0 fw-semibold" style="color: #1e3a8a;">
+                <h5 class="mb-0 fw-semibold" style="background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
                     <i class="bi bi-calendar-event me-2"></i>New Events (14 Days)
                 </h5>
             </div>
