@@ -6,10 +6,42 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0">
                     <i class="bi bi-calendar-event me-2"></i>My Events
+                    @if(request('status') === 'active')
+                        <small class="text-success">(Active Events)</small>
+                    @elseif(request('filter') === 'upcoming')
+                        <small class="text-info">(Upcoming Events)</small>
+                    @endif
                 </h1>
                 <a href="{{ route('events.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-circle me-2"></i>Create New Event
                 </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filter Options -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body py-3">
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="{{ route('events.index') }}" class="btn btn-outline-secondary btn-sm {{ !request('status') && !request('filter') ? 'active' : '' }}">
+                            <i class="bi bi-list me-1"></i>All Events
+                        </a>
+                        <a href="{{ route('events.index', ['status' => 'active']) }}" class="btn btn-outline-success btn-sm {{ request('status') === 'active' ? 'active' : '' }}">
+                            <i class="bi bi-calendar-check me-1"></i>Active Events
+                        </a>
+                        <a href="{{ route('events.index', ['filter' => 'upcoming']) }}" class="btn btn-outline-info btn-sm {{ request('filter') === 'upcoming' ? 'active' : '' }}">
+                            <i class="bi bi-calendar-plus me-1"></i>Upcoming Events
+                        </a>
+                        <a href="{{ route('events.index', ['status' => 'cancelled']) }}" class="btn btn-outline-warning btn-sm {{ request('status') === 'cancelled' ? 'active' : '' }}">
+                            <i class="bi bi-calendar-x me-1"></i>Cancelled Events
+                        </a>
+                        <a href="{{ route('events.index', ['status' => 'completed']) }}" class="btn btn-outline-secondary btn-sm {{ request('status') === 'completed' ? 'active' : '' }}">
+                            <i class="bi bi-calendar-check-fill me-1"></i>Completed Events
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
