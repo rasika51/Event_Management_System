@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Rules\FutureDateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'event_date' => 'required|date|after:now',
+            'event_date' => ['required', 'date', new FutureDateTime],
             'location' => 'required|string|max:255',
             'max_participants' => 'nullable|integer|min:1',
         ]);
@@ -98,7 +99,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'event_date' => 'required|date|after:now',
+            'event_date' => ['required', 'date', new FutureDateTime],
             'location' => 'required|string|max:255',
             'max_participants' => 'nullable|integer|min:1',
             'status' => 'required|in:active,cancelled,completed',
