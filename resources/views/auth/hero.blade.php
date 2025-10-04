@@ -345,16 +345,28 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    @if ($errors->any())
     <script>
-        // Show register tab if there are registration errors
-        @if(old('name') || old('role') || $errors->has('name') || $errors->has('role'))
-            document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-open modal if requested
+            @if(isset($showLoginModal) && $showLoginModal)
+                const loginModal = new bootstrap.Modal(document.getElementById('authModal'));
+                loginModal.show();
+            @elseif(isset($showRegisterModal) && $showRegisterModal)
+                const registerModal = new bootstrap.Modal(document.getElementById('authModal'));
+                registerModal.show();
+                // Switch to register tab
                 const registerTab = new bootstrap.Tab(document.getElementById('register-tab'));
                 registerTab.show();
-            });
-        @endif
+            @endif
+            
+            // Show register tab if there are registration errors
+            @if($errors->any())
+                @if(old('name') || old('role') || $errors->has('name') || $errors->has('role'))
+                    const registerTab = new bootstrap.Tab(document.getElementById('register-tab'));
+                    registerTab.show();
+                @endif
+            @endif
+        });
     </script>
-    @endif
 </body>
 </html>

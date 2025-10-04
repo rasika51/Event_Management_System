@@ -37,7 +37,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <div class="stats-label mb-2">This Month</div>
-                    <div class="stats-number">{{ $userEvents->where('created_at', '>=', now()->startOfMonth())->count() }}</div>
+                    <div class="stats-number">{{ $thisMonthEvents }}</div>
                 </div>
                 <div class="stats-icon icon-info">
                     <i class="bi bi-calendar-check"></i>
