@@ -63,7 +63,7 @@
                                 {{ ucfirst($event->status) }}
                             </span>
                             <small class="text-muted">
-                                <i class="bi bi-calendar me-1"></i>{{ $event->created_at->format('M d, Y') }}
+                                <i class="bi bi-calendar me-1"></i>{{ $event->created_at->setTimezone(config('app.timezone'))->format('M d, Y') }}
                             </small>
                         </div>
                         
