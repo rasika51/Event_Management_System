@@ -11,9 +11,21 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Auth::user()->events()->latest()->paginate(10);
+        $query = Auth::user()->events()->latest();
+        
+        // Filter by status if provided
+        if ($request->has('status') && $request->status !== '') {
+            $query->where('status', $request->status);
+        }
+        
+        // Filter by upcoming events if requested
+        if ($request->has('filter') && $request->filter === 'upcoming') {
+            $query->where('status', 'active')->where('event_date', '>', now());
+        }
+        
+        $events = $query->paginate(10);
         return view('events.index', compact('events'));
     }
 
@@ -36,10 +48,13 @@ class EventController extends Controller
             'event_date' => 'required|date|after:now',
             'location' => 'required|string|max:255',
             'max_participants' => 'nullable|integer|min:1',
-            'status' => 'required|in:active,cancelled,completed',
         ]);
 
-        Auth::user()->events()->create($request->all());
+        // Force status to 'active' for new events
+        $eventData = $request->all();
+        $eventData['status'] = 'active';
+
+        Auth::user()->events()->create($eventData);
 
         return redirect()->route('events.index')->with('success', 'Event created successfully.');
     }

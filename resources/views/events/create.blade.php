@@ -80,16 +80,10 @@
                             </div>
                             
                             <div class="col-md-6 mb-3">
-                                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
-                                <select class="form-select @error('status') is-invalid @enderror" id="status" name="status" required>
-                                    <option value="">Select Status</option>
-                                    <option value="active" {{ old('status') == 'active' ? 'selected' : 'selected' }}>Active</option>
-                                    <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                    <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
-                                </select>
-                                @error('status')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" value="Active" readonly>
+                                <input type="hidden" name="status" value="active">
+                                <div class="form-text">New events are automatically set to Active status.</div>
                             </div>
                         </div>
                         

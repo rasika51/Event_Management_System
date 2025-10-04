@@ -27,7 +27,11 @@ class AuthController extends Controller
      */
     public function showLogin()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            return $this->redirectBasedOnRole();
+        }
+        
+        return view('auth.hero', ['showLoginModal' => true]);
     }
 
     /**
@@ -35,7 +39,11 @@ class AuthController extends Controller
      */
     public function showRegister()
     {
-        return view('auth.register');
+        if (Auth::check()) {
+            return $this->redirectBasedOnRole();
+        }
+        
+        return view('auth.hero', ['showRegisterModal' => true]);
     }
 
     /**

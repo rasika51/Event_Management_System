@@ -116,18 +116,7 @@
                         
                         <hr class="my-4">
                         
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <form method="POST" action="{{ route('events.destroy', $event) }}" 
-                                      class="d-inline" onsubmit="return confirm('Are you sure you want to delete this event? This action cannot be undone.')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="bi bi-trash me-2"></i>Delete Event
-                                    </button>
-                                </form>
-                            </div>
-                            
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-2">
                                 <a href="{{ route('events.show', $event) }}" class="btn btn-outline-secondary">
                                     <i class="bi bi-x-circle me-2"></i>Cancel
@@ -136,8 +125,28 @@
                                     <i class="bi bi-check-circle me-2"></i>Update Event
                                 </button>
                             </div>
+                            
+                            <div>
+                                <button type="button" class="btn btn-danger" onclick="deleteEvent()">
+                                    <i class="bi bi-trash me-2"></i>Delete Event
+                                </button>
+                            </div>
                         </div>
                     </form>
+                    
+                    <!-- Hidden delete form -->
+                    <form id="deleteForm" method="POST" action="{{ route('events.destroy', $event) }}" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    
+                    <script>
+                        function deleteEvent() {
+                            if (confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
+                                document.getElementById('deleteForm').submit();
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
