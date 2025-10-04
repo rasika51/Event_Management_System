@@ -83,13 +83,13 @@
                             <h6 class="text-muted mb-2">
                                 <i class="bi bi-clock me-2"></i>Created
                             </h6>
-                            <p class="mb-0">{{ $event->created_at->format('M d, Y \a\t g:i A') }}</p>
+                            <p class="mb-0">{{ $event->formatted_created_at }}</p>
                         </div>
                         <div class="col-md-6">
                             <h6 class="text-muted mb-2">
                                 <i class="bi bi-arrow-clockwise me-2"></i>Last Updated
                             </h6>
-                            <p class="mb-0">{{ $event->updated_at->format('M d, Y \a\t g:i A') }}</p>
+                            <p class="mb-0">{{ $event->formatted_updated_at }}</p>
                         </div>
                     </div>
                 </div>

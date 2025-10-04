@@ -106,10 +106,18 @@
                             <h6><i class="bi bi-info-circle me-2"></i>Event Information</h6>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <small><strong>Created:</strong> {{ $event->created_at->format('M d, Y \a\t g:i A') }}</small>
+                                    <small><strong>Created:</strong> {{ $event->formatted_created_at }}</small>
                                 </div>
                                 <div class="col-md-6">
-                                    <small><strong>Last Updated:</strong> {{ $event->updated_at->format('M d, Y \a\t g:i A') }}</small>
+                                    <small><strong>Last Updated:</strong> {{ $event->formatted_updated_at }}</small>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <small class="text-muted">
+                                        <i class="bi bi-clock me-1"></i>
+                                        Times are displayed in Sri Lanka timezone ({{ config('app.timezone') }})
+                                    </small>
                                 </div>
                             </div>
                         </div>
@@ -158,8 +166,32 @@
     document.addEventListener('DOMContentLoaded', function() {
         const eventDateInput = document.getElementById('event_date');
         const now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        eventDateInput.min = now.toISOString().slice(0, 16);
+        
+        // Add 1 minute buffer to ensure we're always in the future
+        now.setMinutes(now.getMinutes() + 1);
+        
+        // Format for datetime-local input (YYYY-MM-DDTHH:MM)
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+        eventDateInput.min = minDateTime;
+        
+        // Add real-time validation
+        eventDateInput.addEventListener('change', function() {
+            const selectedDate = new Date(this.value);
+            const currentDate = new Date();
+            
+            if (selectedDate <= currentDate) {
+                this.setCustomValidity('Please select a future date and time.');
+                this.reportValidity();
+            } else {
+                this.setCustomValidity('');
+            }
+        });
     });
 </script>
 @endpush
