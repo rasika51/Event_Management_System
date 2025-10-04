@@ -46,4 +46,20 @@ class Event extends Model
     {
         return $query->where('event_date', '>', now());
     }
+
+    /**
+     * Get formatted created at timestamp
+     */
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->setTimezone(config('app.timezone'))->format('M d, Y \a\t g:i A T');
+    }
+
+    /**
+     * Get formatted updated at timestamp
+     */
+    public function getFormattedUpdatedAtAttribute()
+    {
+        return $this->updated_at->setTimezone(config('app.timezone'))->format('M d, Y \a\t g:i A T');
+    }
 }
