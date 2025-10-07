@@ -8,7 +8,14 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:;">
 
-    <title>{{ config('app.name', 'Event Management System') }}</title>
+    <title>{{ config('app.name', 'EventPro') }}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('eventpro-favicon.svg') }}?t={{ time() }}">
+    <link rel="shortcut icon" href="{{ asset('eventpro-favicon.svg') }}?t={{ time() }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('eventpro-favicon.svg') }}?t={{ time() }}">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="theme-color" content="#667eea">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -295,7 +302,7 @@
             <!-- Sidebar Navigation -->
             <div class="sidebar">
                 <div class="sidebar-brand">
-                    <i class="bi bi-calendar-event me-2"></i>Event Management
+                    <i class="bi bi-calendar-event me-2"></i>EventPro
                 </div>
                 
                 <nav class="nav flex-column">
