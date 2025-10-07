@@ -19,7 +19,7 @@ class AdminController extends Controller
         $recentEvents = Event::with('user')->latest()->take(5)->get();
         $recentUsers = User::latest()->take(5)->get();
         
-        // Statistics for recent period (last 30 days)
+        // Statistics for recent period (last 14 days)
         $recentEventsCount = Event::where('created_at', '>=', now()->subDays(30))->count();
         $recentUsersCount = User::where('created_at', '>=', now()->subDays(30))->count();
         

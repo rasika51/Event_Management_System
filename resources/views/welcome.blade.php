@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>EventPro - Event Management System</title>
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="{{ asset('eventpro-favicon.svg') }}?t={{ time() }}">
+        <link rel="shortcut icon" href="{{ asset('eventpro-favicon.svg') }}?t={{ time() }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
